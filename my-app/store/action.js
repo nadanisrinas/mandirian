@@ -1,5 +1,4 @@
 import * as types from "./types";
-export const setQuote = (payload) => ({ type: types.SET_QUOTE, payload });
 
 const API_HOST = "https://newsapi.org/v2/everything";
 
