@@ -6,6 +6,7 @@ Unduh repository ke dalam komputer menggunakan perintah `git clone`. Url
 repository dapat dilihat di dalam repository yang diinginkan.
 
 ## Install
+- buka folder `my-app`
 - Instalisasi repository
 ```
 npm install
