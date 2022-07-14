@@ -9,17 +9,36 @@ import createEmotionCache from "../src/createEmotionCache";
 //redux
 import { Provider } from "react-redux";
 import { useStore } from "../store";
+//persist
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import dataReducer from "../store/reducers"
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore, persistReducer } from 'redux-persist'
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
+import thunk from "redux-thunk";
 
 // Client-side cache shared for the whole session
 // of the user in the browser.
 
 const clientSideEmotionCache = createEmotionCache();
 
+const persistConfig = {
+  key: 'root',
+  storage
+}
+
+
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  const store = useStore(pageProps.initialReduxState);
+  const store = createStore(
+    persistReducer(persistConfig, dataReducer),
+    applyMiddleware(thunk)
+    );
+  const persistor = persistStore(store)
+
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
       <CacheProvider value={emotionCache}>
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -33,6 +52,7 @@ export default function MyApp(props) {
           <Component {...pageProps} />
         </ThemeProvider>
       </CacheProvider>
+      </PersistGate>
     </Provider>
   );
 }

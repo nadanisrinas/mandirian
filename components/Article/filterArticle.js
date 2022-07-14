@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,10 +14,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Stack } from "@mui/material";
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import dataReducer, { initialStateDataReducers } from "../../store/reducers";
 
-const FilterArticle = ({ page, setPage }) => {
+const FilterArticle = () => {
   const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
+  const [stateReducer, dispatchReducer] = useReducer(dataReducer, initialStateDataReducers);
+  const [page, setPage] = useState(stateReducer.page)
   const [state, setState] = React.useState({
     left: false,
     title: "",
@@ -44,8 +47,8 @@ const FilterArticle = ({ page, setPage }) => {
       searchIn: "title",
       from: state.fromDate,
       to: state.toDate,
-      page: page,
-      pageSize: 10 * page,
+      page: stateReducer.page,
+      pageSize: 5 * stateReducer.page,
       apiKey: "70f987d0e66c40ea856ca262778431bf",
     };
     dispatch(getData(axios, params));
