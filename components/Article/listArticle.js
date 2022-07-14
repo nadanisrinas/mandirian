@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useState } from "react";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
@@ -8,6 +8,8 @@ import { getData } from "../../store/action";
 import CustomCard from "./cardCustom";
 import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
+import dataReducer, { initialStateDataReducers } from "../../store/reducers";
+import { GET_DATA_REQUEST } from "../../store/types";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -20,20 +22,23 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const ListArticle = ({ page, setPage }) => {
+const ListArticle = () => {
   const [expanded, setExpanded] = React.useState(false);
+  const [stateReducer, dispatchReducer] = useReducer(dataReducer, initialStateDataReducers);
+  const [page, setPage] = useState(stateReducer.page)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   const loadMoreData = () => {
-    setPage(page + 1);
+    dispatchReducer({ type: GET_DATA_REQUEST, payload: page })
+    setPage(page + 1)
     let params = {
       q: "bitcoin",
       apiKey: "70f987d0e66c40ea856ca262778431bf",
-      pageSize: 5 * page,
-      page: page,
+      pageSize: 5,
+      page: page + 1,
     };
     dispatch(getData(axios, params));
   };
@@ -44,16 +49,19 @@ const ListArticle = ({ page, setPage }) => {
     let params = {
       q: "bitcoin",
       apiKey: "70f987d0e66c40ea856ca262778431bf",
-      pageSize: 5 * page,
-      page: page,
+      pageSize: 5,
+      page: page + 1,
     };
     dispatch(getData(axios, params));
   }, []);
+  useEffect(() => {
+    
+  },[data])
   return (
     <div>
       {!data.isLoading &&
-        data.data &&
-        data.data.map((item) => (
+        data &&
+        data.map((item) => (
           <CustomCard
             author={item.author}
             title={item.title}
@@ -65,7 +73,7 @@ const ListArticle = ({ page, setPage }) => {
             url={item.url}
           />
         ))}
-      {!data.isLoading && data.data && (
+      {!data.isLoading && data && (
         <Button onClick={loadMoreData}>Load More</Button>
       )}
 

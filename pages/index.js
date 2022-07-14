@@ -3,11 +3,12 @@ import styles from "../styles/Home.module.css";
 import ListArticle from "../components/Article/listArticle";
 import { Suspense } from "react";
 import FilterArticle from "../components/Article/filterArticle";
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { useState } from "react";
-
+import loadable from '@loadable/component'
+import AppBarComponent from "../components/Appbar/appbar";
+const LisArticleComponent = loadable(() => import('../components/Article/listArticle'))
 export default function Home() {
-  const [page, setPage] = useState(1);
 
   return (
     <div className={styles.container}>
@@ -16,10 +17,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <AppBarComponent nav={"nav"}/>
+        <Box component="nav">
         <p>Article List</p>
-        <FilterArticle page={page} setPage={setPage} />
+        <FilterArticle/>
 
-        {/* TODO: issue nextjs with react18  */}
         <Suspense
           fallback={
             <div style={{ width: "100%", height: "100%" }}>
@@ -27,8 +29,9 @@ export default function Home() {
             </div>
           }
         >
-          <ListArticle page={page} setPage={setPage} />
+          <LisArticleComponent/>
         </Suspense>
+        </Box>
       </main>
     </div>
   );
