@@ -19,7 +19,7 @@ const AppBarComponent = ({nav}) => {
       
     return(
         <ThemeProvider theme={darkTheme}>
-<AppBar component={nav}>
+        <AppBar component={nav}>
             <Toolbar>
               <IconButton
                 color="inherit"
