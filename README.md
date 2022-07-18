@@ -30,3 +30,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Deploy on Vercel
 
 https://https-github-com-nadanisrinas-mandirian-9wicrfhfn-nadanisrina.vercel.app/
+
+## Deploy on Netlify 
+
+https://master--mandirian.netlify.app/
+
+# error 426 because i use free plan newsapi.org 
