@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../../store/action";
+import { getData } from "../../../store/action";
 import { Button } from "@mui/material";
 import { Drawer } from "@mui/material";
 import { Box } from "@mui/material";
@@ -14,7 +14,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Stack } from "@mui/material";
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import dataReducer, { initialStateDataReducers } from "../../store/reducers";
+import dataReducer, { initialStateDataReducers } from "../../../store/reducers";
 
 const FilterArticle = () => {
   const data = useSelector((state) => state.data);

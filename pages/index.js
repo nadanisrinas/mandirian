@@ -1,13 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import ListArticle from "../components/Article/listArticle";
+import ListArticle from "../src/components/Article/listArticle";
 import { Suspense } from "react";
-import FilterArticle from "../components/Article/filterArticle";
+import FilterArticle from "../src/components/Article/filterArticle";
 import { Box, CircularProgress } from "@mui/material";
 import { useState } from "react";
 import loadable from '@loadable/component'
-import AppBarComponent from "../components/Appbar/appbar";
-const LisArticleComponent = loadable(() => import('../components/Article/listArticle'))
+import AppBarComponent from "../src/components/Appbar/appbar";
+const LisArticleComponent = loadable(() => import('../src/components/Article/listArticle'))
 export default function Home() {
 
   return (

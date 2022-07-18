@@ -4,12 +4,12 @@ import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getData } from "../../store/action";
+import { getData } from "../../../store/action";
 import CustomCard from "./cardCustom";
 import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
-import dataReducer, { initialStateDataReducers } from "../../store/reducers";
-import { GET_DATA_REQUEST } from "../../store/types";
+import dataReducer, { initialStateDataReducers } from "../../../store/reducers";
+import { GET_DATA_REQUEST } from "../../../store/types";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
