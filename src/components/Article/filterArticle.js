@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useReducer, useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";

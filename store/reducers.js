@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as types from "./types";
 export const initialStateDataReducers = {
   isLoading: false,

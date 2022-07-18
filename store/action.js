@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as types from "./types";
 
 const API_HOST = "https://newsapi.org/v2/everything";
