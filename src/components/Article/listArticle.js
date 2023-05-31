@@ -63,6 +63,7 @@ const ListArticle = () => {
       value:'value1' 
     }
     eventCall(payloadEvent)
+    console.log("coba event1")
   }, []);
   useEffect(() => {
     
