@@ -11,6 +11,7 @@ import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
 import dataReducer, { initialStateDataReducers } from "../../../store/reducers";
 import { GET_DATA_REQUEST } from "../../../store/types";
+import { eventCall } from "../../gtag";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -54,6 +55,14 @@ const ListArticle = () => {
       page: page + 1,
     };
     dispatch(getData(axios, params));
+    const payloadEvent = 
+    { 
+      action: 'action1', 
+      category: 'category1', 
+      label:'label1', 
+      value:'value1' 
+    }
+    eventCall(payloadEvent)
   }, []);
   useEffect(() => {
     
