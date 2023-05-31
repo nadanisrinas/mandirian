@@ -20,14 +20,8 @@ export default class MyDocument extends Document {
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
           {this.props.emotionStyleTags}
         </Head>
-        <body>
           <Main />
           <NextScript />
-          <noscript>
-            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCWQ6MS"
-              height="0" width="0" styles="display:none;visibility:hidden"></iframe>
-            </noscript>
-        </body>
       </Html>
     );
   }

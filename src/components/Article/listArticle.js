@@ -11,7 +11,6 @@ import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
 import dataReducer, { initialStateDataReducers } from "../../../store/reducers";
 import { GET_DATA_REQUEST } from "../../../store/types";
-import { eventCall } from "../../gtag";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,10 +27,6 @@ const ListArticle = () => {
   const [expanded, setExpanded] = React.useState(false);
   const [stateReducer, dispatchReducer] = useReducer(dataReducer, initialStateDataReducers);
   const [page, setPage] = useState(stateReducer.page)
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const loadMoreData = () => {
     dispatchReducer({ type: GET_DATA_REQUEST, payload: page })
@@ -55,14 +50,6 @@ const ListArticle = () => {
       page: page + 1,
     };
     dispatch(getData(axios, params));
-    const payloadEvent = 
-    { 
-      action: 'action1', 
-      category: 'category1', 
-      label:'label1', 
-      value:'value1' 
-    }
-    eventCall(payloadEvent)
     console.log("coba event1")
   }, []);
   useEffect(() => {
