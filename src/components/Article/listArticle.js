@@ -79,7 +79,7 @@ const ListArticle = () => {
       )}
 
       {data.isLoading && (
-        <div style={{ width: "100%", height: "100%" }}>
+        <div styles={{ width: "100%", height: "100%" }}>
           <CircularProgress color="inherit" />
         </div>
       )}
