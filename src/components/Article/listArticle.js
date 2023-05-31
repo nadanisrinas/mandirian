@@ -51,6 +51,7 @@ const ListArticle = () => {
     };
     dispatch(getData(axios, params));
     console.log("coba event1")
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'pageview-mandirian'
     });
