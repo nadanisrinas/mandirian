@@ -11,6 +11,7 @@ import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
 import dataReducer, { initialStateDataReducers } from "../../../store/reducers";
 import { GET_DATA_REQUEST } from "../../../store/types";
+import TagManager from 'react-gtm-module'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,6 +44,7 @@ const ListArticle = () => {
   const data = useSelector((state) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-MCWQ6MS' });
     let params = {
       q: "bitcoin",
       apiKey: "70f987d0e66c40ea856ca262778431bf",
@@ -51,9 +53,11 @@ const ListArticle = () => {
     };
     dispatch(getData(axios, params));
     console.log("coba event1")
+    window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'pageview-mandirian'
     });
+   
   }, []);
   useEffect(() => {
     

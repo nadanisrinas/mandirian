@@ -28,6 +28,7 @@
     "prettier": "^2.6.2",
     "react": "^18.0.0-rc.3",
     "react-dom": "^18.0.0-rc.3",
+    "react-gtm-module": "^2.0.11",
     "react-redux": "^8.0.0",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
@@ -35,7 +36,6 @@
     "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.12.2",
     "babel-eslint": "^10.1.0",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5"
